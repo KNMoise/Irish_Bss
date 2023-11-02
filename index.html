@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Names List</title>
+  </head>
+
+  <body>
+    <div id="main-content">
+      <button onclick="goToForm()">Create</button>
+      <ul id="names-list">
+        <li>
+          <a href="#" onclick="editName('John')">John</a>
+          <button onclick="deleteName('John')">Delete</button>
+        </li>
+        <li>
+          <a href="#" onclick="editName('Alice')">Alice</a>
+          <button onclick="deleteName('Alice')">Delete</button>
+        </li>
+        <!-- More list items will be dynamically added here -->
+      </ul>
+    </div>
+
+    <div id="form-content" style="display: none">
+      <h2>BARURA UMUKIRIYA MUSHYASHYA UTWAYE IDENI !?</h2>
+      <form onsubmit="saveName(); return false;">
+        <label for="name">AMAZINA</label>
+        <input type="text" id="name" required />
+        <label for="phone">Phone Number:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{3}-[0-9]{4}"
+          placeholder="Enter phone number"
+          oninput="formatPhoneNumber(this)"
+        />
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required
+        min="2020-05-07"
+        oninput="formatDate"/>
+
+        <button type="submit">Save</button>
+      </form>
+      <div id="success-message" style="background-color: blanchedalmond"></div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/google-libphonenumber/7.0.3/libphonenumber.js"></script>
+  </body>
+</html>
