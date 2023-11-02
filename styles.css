@@ -8,6 +8,12 @@ body {
     align-items: center;
     height: 100vh;
 }
+.title{
+    color:#059ae4;
+    font-size: 25px;
+    letter-spacing: .5em;
+    background-color: transparent;
+}
 
 .container {
     max-width: 400px;
@@ -20,6 +26,7 @@ body {
 ul {
     list-style: none;
     padding: 0;
+    margin-top: 50%;
 }
 
 li {
@@ -34,7 +41,6 @@ a {
 button {
     background-color: #007bff;
     justify-content: center;
-    align: center;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -58,13 +64,39 @@ label {
 }
 
 input[type="text"] {
-    width: calc(100% - 22px);
     padding: 8px;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
 }
+input[type="tel"] {
+    /* width: calc(100% - 22px); */
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+/* Apply styles to the date input */
+input[type="date"] {
+    width: 190px;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+  /* Style the label for better alignment */
+label {
+    margin-bottom: 10px;
+    display: block;
+    font-size: 20px;
+}
+
 
 input[type="submit"] {
     background-color: #28a745;
@@ -72,10 +104,30 @@ input[type="submit"] {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 200px;
     transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
     background-color: #218838;
+    position:absolute;
+    
+}
+/* Style the label */
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+    /* width: 100%; Make the dropdown take up full width */
+}
+
+  /* Style the dropdown options */
+select option {
+    font-size: 16px;
+}
+
+  /* Style the selected option */
+select option:checked {
+    background-color: #e0e0e0;
 }

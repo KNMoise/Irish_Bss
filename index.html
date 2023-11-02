@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Names List</title>
+    <title>IRISH B'SS GROUP🚚🍟</title>
   </head>
 
   <body>
     <div id="main-content">
       <button onclick="goToForm()">Create</button>
-      <ul id="names-list">
+      <!-- <ul id="names-list">
         <li>
           <a href="#" onclick="editName('John')">John</a>
           <button onclick="deleteName('John')">Delete</button>
@@ -18,7 +18,7 @@
         <li>
           <a href="#" onclick="editName('Alice')">Alice</a>
           <button onclick="deleteName('Alice')">Delete</button>
-        </li>
+        </li> -->
         <!-- More list items will be dynamically added here -->
       </ul>
     </div>
@@ -26,8 +26,10 @@
     <div id="form-content" style="display: none">
       <h2>BARURA UMUKIRIYA MUSHYASHYA UTWAYE IDENI !?</h2>
       <form onsubmit="saveName(); return false;">
-        <label for="name">AMAZINA</label>
+        <label for="name">Names</label>
         <input type="text" id="name" required />
+        <label for="name">commercial name</label>
+        <input type="text" id="commercial name" required />
         <label for="phone">Phone Number:</label>
         <input
           type="tel"
@@ -37,12 +39,44 @@
           placeholder="Enter phone number"
           oninput="formatPhoneNumber(this)"
         />
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required
-        min="2020-05-07"
-        oninput="formatDate"/>
+        <label for="period">Payment period:</label>
+        <select id="period" name="period" onchange="checkPaymentPeriod()" required>
+          <option value="">Select Payment Method</option>
+          <option value="Daily ('one day but not later than 2 day')">Daily</option>
+          <option value="30 Days ('Monthly')"> 30 Days</option>
+          <option value="other">other</option>
+        </select>
 
-        <button type="submit">Save</button>
+        <label for="date">Date:</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          required
+          min="2020-05-07"
+          oninput="formatDate"(this)
+        />
+        <label for="date">PaymentDate:</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          required
+          min="2020-05-07"
+          oninput="formatDate"(this)
+        />
+        <br>
+
+        <button type="submit">Save Client</button>
+
+        <div id="create-user-message" class="message"></div>
+    </div>
+
+    <div id="user-info" class="hidden">
+        <!-- User information display goes here -->
+        <h2>User Information</h2>
+        <div id="user-details"></div>
+    </div>
       </form>
       <div id="success-message" style="background-color: blanchedalmond"></div>
     </div>
