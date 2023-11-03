@@ -1,16 +1,16 @@
 <?php
+$FullName = $_POST['fllname'];
+$email = $_POST['email'];
+$phone = $_POST['tel'];
+$address1 = $_POST['address1'];
+$city = $_POST['city'];
+$period = $_POST['period'];
+$date = $_POST['date'];
 
-include 'irish_db.php';
 
-$servername = "localhost"; // Change this to your database server name
-$username = "username"; // Change this to your database username
-$password = "password"; // Change this to your database password
-$dbname = "Irish_db"; // Change this to your database name
+// db connection 
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
+$conn = new mysqli('localhost','root','','irish_db');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -26,3 +26,6 @@ if
     }else{
         echo "Error " . $sql . "<br>" . $conn->error;
     }
+
+
+?>

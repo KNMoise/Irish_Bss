@@ -12,17 +12,17 @@ function saveName()
     }
 }
 
-function deleteName() 
-{
-    var confirmation = confirm('Are you sure you want to delete this customer?');
-    if (confirmation) {
-        document.getElementById('success-message').innerText = 'Customer has been deleted successfully!';
-        // Assuming you have a function deleteNameFromDatabase() to delete the name from the database
-        // deleteNameFromDatabase(name);
-    } else {
-        document.getElementById('success-message').innerText = 'Deletion cancelled.';
-    }
-}
+// function deleteName() 
+// {
+//     var confirmation = confirm('Are you sure you want to delete this customer?');
+//     if (confirmation) {
+//         document.getElementById('success-message').innerText = 'Customer has been deleted successfully!';
+//         // Assuming you have a function deleteNameFromDatabase() to delete the name from the database
+//         // deleteNameFromDatabase(name);
+//     } else {
+//         document.getElementById('success-message').innerText = 'Deletion cancelled.';
+//     }
+// }
 
 function goToForm() 
 {
@@ -138,3 +138,49 @@ function validateForm() {
 
     return true;
 }
+function fetchUserData() {
+    // Assuming the backend endpoint to fetch user data is '/api/users'
+    fetch('/api/users')
+        .then(response => response.json())
+        .then(data => {
+            // Call a function to render the user data in the container
+            renderUserData(data);
+        })
+        .catch(error => {
+            console.error('Error fetching user data:', error);
+        });
+}
+
+function renderUserData(userData) {
+    var userContainer = document.getElementById('user-container');
+    userContainer.innerHTML = ''; // Clear existing content
+
+    // Iterate over the user data and create HTML elements to display it
+    userData.forEach(user => {
+        var userDiv = document.createElement('div');
+        userDiv.className = 'user-entry';
+        userDiv.textContent = `Name: ${user.name}, Commercial Name: ${user.commercialName}, Phone: ${user.phone}, Payment Period: ${user.paymentPeriod}, Date: ${user.date}`;
+
+        userContainer.appendChild(userDiv);
+    });
+}
+function saveName() {
+    var name = document.getElementById('name').value;
+    var commercialName = document.getElementById('commercial-name').value;
+    var phone = document.getElementById('phone').value;
+    var period = document.getElementById('period').value;
+    var date = document.getElementById('date').value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "save_user.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Handle the response from the server if needed
+            console.log(xhr.responseText);
+        }
+    };
+    var data = "name=" + name + "&commercial_name=" + commercialName + "&phone=" + phone + "&period=" + period + "&date=" + date;
+    xhr.send(data);
+}
+

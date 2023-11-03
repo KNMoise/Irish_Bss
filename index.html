@@ -9,45 +9,50 @@
 </head>
 
 <body>
-    <div id="main-content">
-      <button onclick="goToForm()">Create</button>
-      <button onclick="goToForm()">Home</button>
+    <div class="user-container">
+        <div id="main-content">
+            <button onclick="goToForm()">Create</button>
+            <button onclick="usersFormList()">Home</button>
+        </div>
+
+
+        <div id="form-content" style="display: none">
+            <form action="connect.php"Method="post" onsubmit=saveName(); return validationForm();">
+                <label for="name">FullName:</label>
+                <input type="text" id="name" name="fllname" required />
+                <label for="commercial-name">Commercial Name:</label>
+                <input type="text" id="commercial-name" name="Commercial" required />
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number"
+                    oninput="formatPhoneNumber(this)"name="tel" />
+                <label for="period">Payment period:</label>
+                <select id="period" name="period" onchange="checkPaymentPeriod()"name="period" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="Daily ('one day but not later than 2 day')">Daily</option>
+                    <option value="30 Days ('Monthly')">30 Days</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" name="date"required min="2020-05-07" oninput="formatDate(this)" />
+                <br>
+                <button type="submit">Save Client</button>
+                <div id="create-user-message" class="message"></div>
+        </div>
+
+        <div id="user-info" class="hidden">
+            <!-- User information display goes here -->
+            <div id="user-details"></div>
+        </div>
+        <div id="user-container">
+            <!-- User data will be displayed here -->
+        </div>
+
+
+        <div id="success-message" style="background-color: blanchedalmond"></div>
+
+        <script src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/google-libphonenumber/7.0.3/libphonenumber.js"></script>
     </div>
-
-
-    <div id="form-content" style="display: none">
-        <h2>BARURA UMUKIRIYA MUSHYASHYA UTWAYE IDENI !?</h2>
-        <form onsubmit = saveName(); return validationForm();">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required />
-            <label for="commercial-name">Commercial Name:</label>
-            <input type="text" id="commercial-name" required />
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" oninput="formatPhoneNumber(this)" />
-            <label for="period">Payment period:</label>
-            <select id="period" name="period" onchange="checkPaymentPeriod()" required>
-                <option value="">Select Payment Method</option>
-                <option value="Daily ('one day but not later than 2 day')">Daily</option>
-                <option value="30 Days ('Monthly')">30 Days</option>
-                <option value="other">Other</option>
-            </select>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required min="2020-05-07" oninput="formatDate(this)" />
-            <br>
-            <button type="submit">Save Client</button>
-        </form>
-        <div id="create-user-message" class="message"></div>
-    </div>
-
-    <div id="user-info" class="hidden">
-        <!-- User information display goes here -->
-        <div id="user-details"></div>
-    </div>
-
-    <div id="success-message" style="background-color: blanchedalmond"></div>
-
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/google-libphonenumber/7.0.3/libphonenumber.js"></script>
 </body>
 
 </html>
