@@ -37,21 +37,21 @@ function editName(name)
     console.log('Editing name: ' + name);
     alert('You are about to edit the client information');
 }
-function formatPhoneNumber(inputElement) 
-{
+function formatPhoneNumber(inputElement) {
     var phoneNumber = inputElement.value;
     var phoneNumberUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
-    var defaultCountryCode = 'RW';
+    var defaultCountryCode = 'RW'; // Set the country code for Rwanda
 
     try {
-    var phoneNumberObj = phoneNumberUtil.parse(phoneNumber, 'RW'); // Assuming default country is the United States (you can change it as needed)
-    var formattedNumber = phoneNumberUtil.format(phoneNumberObj, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
-    inputElement.setCustomValidity(''); // Clear any previous validation error
-    inputElement.value = formattedNumber;
+        var phoneNumberObj = phoneNumberUtil.parse(phoneNumber, defaultCountryCode);
+        var formattedNumber = phoneNumberUtil.format(phoneNumberObj, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
+        inputElement.setCustomValidity(''); // Clear any previous validation error
+        inputElement.value = formattedNumber;
     } catch (error) {
-    inputElement.setCustomValidity('Invalid phone number');
+        inputElement.setCustomValidity('Invalid phone number');
     }
 }
+
 function formatDate(inputElement)
 {
     var currentDate = new Date();
